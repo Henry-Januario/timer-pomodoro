@@ -1,7 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
 .roxo{
     background-color: #563D7C;
 }
 
 .icone{
-    font-size: 25pt;
+    font-size: 25pt !important;
 }
+
+input{
+    width: 150px !important;
+    height: 150px !important;
+    font-size: 50pt !important;
+    text-align: center !important;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Configuração tipo o webkit acima para o mozila */
+input[type="number"] {
+    -moz-appearance: none;
+}
+/* /Configuração tipo o webkit acima para o mozila */
