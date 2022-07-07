@@ -32,7 +32,11 @@ input[type="number"] {
 /* /Configuração tipo o webkit acima para o mozila */
 
 .display-none{
-    display: none;
+    display: none !important;
+}
+
+.display-block{
+    display: block !important;
 }
 
 .time {
