@@ -47,6 +47,7 @@
     <!-- Container -->
 
     <div class="container">
+        <!-- Config -->
         <div class="row d-flex justify-content-center">
 
             <div class="col-md-8">
@@ -103,23 +104,76 @@
                 <div class="alert alert-success" role="alert">
                     <h4 class="alert-heading">Instruções</h4>
                     <p>Para configurar o Timer Pomodoro é bastante simples:
-                        <ol>
-                            <li>Para iniciar coloque em <strong>Ação</strong> o tempo em minutos que você deseja estar focado.</li>
-                            <li>Em <strong>Pausa</strong> indique quanto tempo você irá descansar entre as sessões de foco/trabalho.</li>
-                            <li>Defina em <strong>Sessões</strong> quantas vezes você quer repetir o ciclo.</li>
-                            <li>Por ultimo é só apertar no botão <strong>Iniciar</strong>.</li>
-                        </ol>
+                    <ol>
+                        <li>Para iniciar coloque em <strong>Ação</strong> o tempo em minutos que você deseja estar
+                            focado.</li>
+                        <li>Em <strong>Pausa</strong> indique quanto tempo você irá descansar entre as sessões de
+                            foco/trabalho.</li>
+                        <li>Defina em <strong>Sessões</strong> quantas vezes você quer repetir o ciclo.</li>
+                        <li>Por ultimo é só apertar no botão <strong>Iniciar</strong>.</li>
+                    </ol>
                     </p>
                     <hr>
-                    <p class="mb-0"><strong>Exemplo:</strong> 25min de ação, 5min de pausa e 4 sessões. Totalizando 2h de produtividade! <br>
-                        Para saber mais sobre a técnica Pomodoro, clique <strong><a href="https://www.napratica.org.br/pomodoro/" class="badge badge-info">aqui</a></strong>.
+                    <p class="mb-0"><strong>Exemplo:</strong> 25min de ação, 5min de pausa e 4 sessões. Totalizando 2h
+                        de produtividade! <br>
+                        Para saber mais sobre a técnica Pomodoro, clique <strong><a
+                                href="https://www.napratica.org.br/pomodoro/"
+                                class="badge badge-info">aqui</a></strong>.
                     </p>
-                  </div>
+                </div>
 
                 <!-- /Instruções -->
             </div>
 
         </div>
+        <!-- /Config -->
+
+        <!-- Timer -->
+        <div id="timer" class="mt-0 d-flex justify-content-center display-none">
+
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <h3 id="title" class="text-center"></h3>
+            </div>
+        </div>
+
+        <!-- Relogio Timer -->
+        <div class="row shadow time">
+
+            <div class="col-5 p-0">
+                <h2 class="minutes_ok"></h2>
+            </div>
+
+            <div class="col-1 p-0 d-flex justify-content-center">
+                <h2>:</h2>
+            </div>
+
+            <div class="col-5 pl-0">
+                <h2 class="seconds_ok"></h2>
+            </div>
+
+        </div>
+        <!-- /Relogio Timer -->
+
+        <div class="row mb-3">
+            <div class="col">
+                <h3 id="title_sessao" class="text-center text-secondary"></h3>
+            </div>
+        </div>
+        <!-- /Timer -->
+
+        <!-- Finalização -->
+        <div id="fim" class="display-none">
+            <h1 class="text-success text-center"> Parabéns! Você finalizou suas tarefas.</h1>
+            <div class="row mt-5 mb-5 d-flex justify-content-center">
+                <div class="col-md-9 d-flex justify-content-center">
+                    <a href="./index.html" class="btn roxo shadow btn-lg text-white">Inicio</a>
+                </div>
+            </div>
+        </div>
+        <!-- /Finalização -->
     </div>
 
     <!-- /Container -->

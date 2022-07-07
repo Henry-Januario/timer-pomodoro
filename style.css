@@ -30,3 +30,22 @@ input[type="number"] {
     -moz-appearance: none;
 }
 /* /Configuração tipo o webkit acima para o mozila */
+
+.display-none{
+    display: none;
+}
+
+.time {
+    color: #fff;
+    text-align: center;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    font-size: 90pt;
+}
