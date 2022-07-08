@@ -9,6 +9,10 @@ function iniciar(){
 
     const lofi = new Audio('./audio/lo-fi.mp3')
     const pause = document.getElementById('pause')
+    
+    const timer = document.getElementById('timer')
+
+    const config = document.getElementById('config')
 
 
     if(acao.value == 0){
@@ -23,5 +27,22 @@ function iniciar(){
     }else {
         pause.classList.replace('display-none', 'display-block')
         lofi.play()
+
+        localStorage.setItem('acao', String(acao.value))
+        localStorage.setItem('pausa', String(pausa.value))
+        localStorage.setItem('sessoes', String(sessoes.value))
+
+        timer.classList.replace('display-none', 'd-flex')
+        config.classList.replace('d-flex', 'display-none')
+        instrucoes.classList.add('display-none')
     }
+}
+
+function momentoAcao(){
+
+}
+
+
+function momentoPausa(){
+    
 }
