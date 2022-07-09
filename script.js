@@ -40,59 +40,66 @@ function momentoAcao() {
     let sessoes_valor = localStorage.getItem('sessoes')
 
     if (sessoes_valor != "1") {
-        document.getElementById('title_sessao').innerText = sessoes_valor + "sessões restantes"
+        document.getElementById('title_sessao').innerText = sessoes_valor + " sessões restantes"
     } else {
-        document.getElementById('title_sessao').innerText = sessoes_valor + "sessão restante"
+        console.log('entrei no else');
+        document.getElementById('title_sessao').innerText = sessoes_valor + " sessão restante"
     }
 
-    const title = document.querySelector('#title')
+    let title = document.querySelector('#title')
     title.innerText = 'AÇÃO'
 
-    let min = Number(localStorage.getItem(acao))
+    min = Number(localStorage.getItem('acao'))
+
     min = min - 1
     let segundos = 59
 
-    document.querySelector("#minutes_ok").innerHTML = min
-    document.querySelector("#seconds_ok").innerHTML = segundos
 
-    min_interval = setInterval(minTimer, 60000)
-    seg_interval = setInterval(segTimer, 1000)
+    document.querySelector("#minutes_ok").innerText = min
+    document.querySelector("#seconds_ok").innerText = segundos
+
+    let min_interval = setInterval(minTimer, 60000)
+    let seg_interval = setInterval(segTimer, 1000)
+
 
     function minTimer() {
+        console.log('minTimer');
         min = min - 1
         document.querySelector("#minutes_ok").innerText = min
     }
 
     function segTimer() {
+        console.log('segTimer');
         segundos = segundos - 1
-        document.querySelector("#seconds").innerText = segundos
+        document.querySelector("#seconds_ok").innerText = segundos
 
-        if (segundos <= 0)
+        if (segundos <= 0) {            
             if (min <= 0) {
-                clearInterval('min_interval')
-                clearInterval('seg_interval')
 
-                const bell = new Audio("./audio/audio_bell.mp3")
-
+                console.log('Entrei aqui');
+                clearInterval(min_interval)
+                clearInterval(seg_interval)
+                const bell = new Audio('./audio/audio_bell.mp3')
+                
                 bell.play()
 
                 momentoPausa()
-
             }
-        segundos = 60
+            segundos = 60
+        }
     }
 }
 
-
-
 function momentoPausa() {
+    console.log('entrei na pausa');
     const title = document.querySelector('#title')
     title.innerText = 'PAUSA'
     title.style.setProperty('color', '#dc3545', 'important')
 
-    let min_pausa = Number(localStorage.getItem(pausa))
+    min_pausa = Number(localStorage.getItem('pausa'))
+
     min_pausa = min_pausa - 1
-    let segundos = 59
+    segundos = 59
 
     document.querySelector("#minutes_ok").innerText = min_pausa
     document.querySelector("#seconds_ok").innerText = segundos
@@ -105,9 +112,10 @@ function momentoPausa() {
         document.querySelector('#minutes_ok').innerText = min_pausa
     }
 
-    function segTimer() { }
-    segundos = segundos - 1
-    document.querySelector("#seconds").innerText = segundos
+    function segTimer() {
+        segundos = segundos - 1
+        document.querySelector("#seconds").innerText = segundos
+    }
 
     if (segundos <= 0)
         if (min_pausa <= 0) {
@@ -134,7 +142,7 @@ function momentoPausa() {
                 timer.classList.replace('d-flex', 'display-none')
                 config.classList.replace('display-none', 'd-flex')
                 fim.classList.replace('display-none', 'd-flex')
-            } else{
+            } else {
                 const volta = new Audio("./audio/audio_volta.mp3")
                 momentoAcao()
                 volta.play()
