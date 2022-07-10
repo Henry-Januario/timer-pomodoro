@@ -1,3 +1,28 @@
+function pausar(){
+
+    lofi.pause()
+
+    let play = document.getElementById('play')
+    let pause = document.getElementById('pause')
+
+
+    play.classList.replace('display-none', 'd-flex')
+    pause.classList.replace('d-flex', 'display-none')
+
+}
+
+function executar(){
+    const lofi = new Audio('./audio/lo-fi.mp3')
+    lofi.play()
+
+    let play = document.getElementById('play')
+    let pause = document.getElementById('pause')
+
+
+    pause.classList.replace('display-none', 'd-flex')
+    play.classList.replace('d-flex', 'display-none')
+}
+
 function iniciar() {
     let acao = document.getElementById('acao')
     let pausa = document.getElementById('pausa')
@@ -22,6 +47,7 @@ function iniciar() {
     } else {
         pause.classList.replace('display-none', 'display-block')
         lofi.play()
+        
 
         localStorage.setItem('acao', String(acao.value))
         localStorage.setItem('pausa', String(pausa.value))
@@ -59,7 +85,7 @@ function momentoAcao() {
     document.querySelector("#seconds_ok").innerText = segundos
 
     let min_interval = setInterval(minTimer, 60000)
-    let seg_interval = setInterval(segTimer, 1000)
+    let seg_interval = setInterval(segTimer, 200)
 
 
     function minTimer() {
@@ -73,14 +99,14 @@ function momentoAcao() {
         segundos = segundos - 1
         document.querySelector("#seconds_ok").innerText = segundos
 
-        if (segundos <= 0) {            
+        if (segundos <= 0) {
             if (min <= 0) {
 
                 console.log('Entrei aqui');
                 clearInterval(min_interval)
                 clearInterval(seg_interval)
                 const bell = new Audio('./audio/audio_bell.mp3')
-                
+
                 bell.play()
 
                 momentoPausa()
@@ -105,7 +131,7 @@ function momentoPausa() {
     document.querySelector("#seconds_ok").innerText = segundos
 
     let min_interval = setInterval(minTimer, 60000)
-    let seg_interval = setInterval(segTimer, 1000)
+    let seg_interval = setInterval(segTimer, 200)
 
     function minTimer() {
         console.log("entrei no minTimer Pausa");
@@ -119,39 +145,49 @@ function momentoPausa() {
         segundos = segundos - 1
         document.querySelector("#seconds_ok").innerHTML = segundos
 
-    }
-
-    if (segundos <= 0)
-        if (min_pausa <= 0) {
-
-            ses = Number(localStorage.getItem('sessoes'))
-            ses = ses - 1
-            localStorage.setItem('sessoes', String(ses))
-
-            clearInterval('min_interval')
-            clearInterval('seg_interval')
-
-            if (ses <= 0) {
-
-                const final = new Audio("./audio/audio_final.mp3")
-
-                final.play()
-                localStorage.clear()
 
 
-                const timer = document.getElementById('timer')
-                const config = document.getElementById('config')
-                const fim = document.getElementById('fim')
+        if (segundos <= 0) {
+            console.log('To entrando aqui?');
 
-                timer.classList.replace('d-flex', 'display-none')
-                config.classList.replace('d-flex', 'd-none')
-                fim.classList.replace('display-none', 'd-flex')
-            } else {
-                const volta = new Audio("./audio/audio_volta.mp3")
-                volta.play()
+            segundos = 60
 
-                momentoAcao()
+            if (min_pausa <= 0) {
+                console.log("reset da pausa");
+
+                ses = Number(localStorage.getItem('sessoes'))
+                ses = ses - 1
+                localStorage.setItem('sessoes', String(ses))
+
+                clearInterval('min_interval')
+                clearInterval('seg_interval')
+
+                if (ses <= 0) {
+
+                    console.log("chegou ao final");
+
+                    const final = new Audio("./audio/audio_final.mp3")
+
+                    final.play()
+                    localStorage.clear()
+
+
+                    const timer = document.getElementById('timer')
+                    const config = document.getElementById('config')
+                    const fim = document.getElementById('fim')
+
+                    timer.classList.replace('d-flex', 'display-none')
+                    config.classList.replace('d-flex', 'd-none')
+                    fim.classList.replace('display-none', 'd-flex')
+
+                    
+                } else {
+                    const volta = new Audio("./audio/audio_volta.mp3")
+                    volta.play()
+
+                    momentoAcao()
+                }
             }
         }
-    segundos = 60
+    }
 }
