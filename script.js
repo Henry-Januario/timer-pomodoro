@@ -99,22 +99,26 @@ function momentoPausa() {
     min_pausa = Number(localStorage.getItem('pausa'))
 
     min_pausa = min_pausa - 1
-    segundos = 59
+    let segundos = 59
 
     document.querySelector("#minutes_ok").innerText = min_pausa
     document.querySelector("#seconds_ok").innerText = segundos
 
-    min_interval = setInterval(minTimer, 60000)
-    seg_interval = setInterval(segTimer, 1000)
+    let min_interval = setInterval(minTimer, 60000)
+    let seg_interval = setInterval(segTimer, 1000)
 
     function minTimer() {
+        console.log("entrei no minTimer Pausa");
+        min_pausa = Number(localStorage.getItem('pausa'))
         min_pausa = min_pausa - 1
-        document.querySelector('#minutes_ok').innerText = min_pausa
+        document.querySelector("#minutes_ok").innerHTML = min_pausa
     }
 
     function segTimer() {
+        console.log("entrei no segTimer Pausa");
         segundos = segundos - 1
-        document.querySelector("#seconds").innerText = segundos
+        document.querySelector("#seconds_ok").innerHTML = segundos
+
     }
 
     if (segundos <= 0)
@@ -140,16 +144,14 @@ function momentoPausa() {
                 const fim = document.getElementById('fim')
 
                 timer.classList.replace('d-flex', 'display-none')
-                config.classList.replace('display-none', 'd-flex')
+                config.classList.replace('d-flex', 'd-none')
                 fim.classList.replace('display-none', 'd-flex')
             } else {
                 const volta = new Audio("./audio/audio_volta.mp3")
-                momentoAcao()
                 volta.play()
 
+                momentoAcao()
             }
-
         }
-
     segundos = 60
 }
