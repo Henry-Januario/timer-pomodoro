@@ -12,7 +12,7 @@ function pausar(){
 }
 
 function executar(){
-    const lofi = new Audio('./audio/lo-fi.mp3')
+    const lofi =  document.querySelector('#lofi')
     lofi.play()
 
     let play = document.getElementById('play')
@@ -28,7 +28,7 @@ function iniciar() {
     let pausa = document.getElementById('pausa')
     let sessoes = document.getElementById('sessoes')
 
-    const lofi = new Audio('./audio/lo-fi.mp3')
+    const lofi =  document.querySelector('#lofi')
     const pause = document.getElementById('pause')
 
     const timer = document.getElementById('timer')
