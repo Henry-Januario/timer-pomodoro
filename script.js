@@ -62,7 +62,6 @@ function iniciar() {
 }
 
 function momentoAcao() {
-
     let sessoes_valor = localStorage.getItem('sessoes')
 
     if (sessoes_valor != "1") {
@@ -85,7 +84,7 @@ function momentoAcao() {
     document.querySelector("#seconds_ok").innerText = segundos
 
     let min_interval = setInterval(minTimer, 60000)
-    let seg_interval = setInterval(segTimer, 200)
+    let seg_interval = setInterval(segTimer, 500)
 
 
     function minTimer() {
@@ -98,6 +97,10 @@ function momentoAcao() {
         console.log('segTimer');
         segundos = segundos - 1
         document.querySelector("#seconds_ok").innerText = segundos
+
+        if (segundos == 0) {
+            minTimer()
+        }
 
         if (segundos <= 0) {
             if (min <= 0) {
@@ -131,20 +134,22 @@ function momentoPausa() {
     document.querySelector("#seconds_ok").innerText = segundos
 
     let min_interval = setInterval(minTimer, 60000)
-    let seg_interval = setInterval(segTimer, 200)
+    let seg_interval = setInterval(segTimer, 500)
 
     function minTimer() {
         console.log("entrei no minTimer Pausa");
-        min_pausa = Number(localStorage.getItem('pausa'))
         min_pausa = min_pausa - 1
-        document.querySelector("#minutes_ok").innerHTML = min_pausa
+        document.querySelector("#minutes_ok").innerText = min_pausa
     }
 
     function segTimer() {
         console.log("entrei no segTimer Pausa");
         segundos = segundos - 1
-        document.querySelector("#seconds_ok").innerHTML = segundos
+        document.querySelector("#seconds_ok").innerText = segundos
 
+        if (segundos == 1) {
+            minTimer()
+        }
 
 
         if (segundos <= 0) {
